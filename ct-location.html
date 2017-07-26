@@ -1,0 +1,34 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`ct-location`
+Element for location or address display and capture
+
+@demo demo/index.html 
+-->
+
+<dom-module id="ct-location">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]</h2>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'ct-location',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'ct-location',
+        },
+      },
+
+    });
+  </script>
+</dom-module>
