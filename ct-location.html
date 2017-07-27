@@ -81,7 +81,7 @@ Element for location or address display and capture
                   <google-map-marker
                           latitude="{{ location.coordinates.latitude }}"
                           longitude="{{ location.coordinates.longitude }}"
-                          draggable$="[[ !readonly ]]">
+                          draggable="[[ !readonly ]]">
                   </google-map-marker>
                 </google-map>
               </div>
@@ -106,122 +106,122 @@ Element for location or address display and capture
                   <div class="col-sm-12 col-xs-12">
                     <div class="form-group">
                       <paper-input
-                        id="unitNumberInput"
-                        readonly="[[ readonly ]]"
-                        label="Unit/Apartment Number"
-                        type="text"
-                        name="unitNumber"
-                        value="[[ location.unitNumber ]]">
+                              id="unitNumberInput"
+                              readonly="[[ readonly ]]"
+                              label="Unit/Apartment Number"
+                              type="text"
+                              name="unitNumber"
+                              value="[[ location.unitNumber ]]">
                       </paper-input>
                     </div>
                   </div>
                   <div class="col-sm-12 col-xs-12">
                     <div class="form-group">
                       <paper-input
-                        id="complexNameInput"
-                        readonly="[[ readonly ]]"
-                        label="Complex/Farm Name"
-                        type="text"
-                        name="complexName"
-                        value="[[ location.complexName ]]">
+                              id="complexNameInput"
+                              readonly="[[ readonly ]]"
+                              label="Complex/Farm Name"
+                              type="text"
+                              name="complexName"
+                              value="[[ location.complexName ]]">
                       </paper-input>
                     </div>
                   </div>
                   <div class="col-sm-12 col-xs-12">
                     <div class="form-group">
                       <paper-input
-                        readonly="[[ readonly ]]"
-                        label="Street Number"
-                        name="streetNumber"
-                        value="[[ location.streetNumber ]]"
-                        required
-                        allowed-pattern="[0-9]"
-                        auto-validate="[[ !readonly ]]"
-                        error-message="Street number required">
+                              readonly="[[ readonly ]]"
+                              label="Street Number"
+                              name="streetNumber"
+                              value="[[ location.streetNumber ]]"
+                              required
+                              allowed-pattern="[0-9]"
+                              auto-validate="[[ !readonly ]]"
+                              error-message="Street number required">
                       </paper-input>
                     </div>
                   </div>
                   <div class="col-sm-12 col-xs-12">
                     <div class="form-group">
                       <paper-input
-                        readonly="[[ readonly ]]"
-                        label="Street Name"
-                        type="text"
-                        name="streetName"
-                        value="[[ location.streetName ]]"
-                        required
-                        auto-validate="[[ !readonly ]]"
-                        error-message="Street name required">
+                              readonly="[[ readonly ]]"
+                              label="Street Name"
+                              type="text"
+                              name="streetName"
+                              value="[[ location.streetName ]]"
+                              required
+                              auto-validate="[[ !readonly ]]"
+                              error-message="Street name required">
                       </paper-input>
                     </div>
                   </div>
                   <div class="col-sm-12 col-xs-12">
                     <div class="form-group">
                       <paper-input
-                        readonly="[[ readonly ]]"
-                        label="Suburb"
-                        type="text"
-                        name="suburb"
-                        value="[[ location.suburb ]]"
-                        required
-                        auto-validate="[[ !readonly ]]"
-                        error-message="Suburb required">
+                              readonly="[[ readonly ]]"
+                              label="Suburb"
+                              type="text"
+                              name="suburb"
+                              value="[[ location.suburb ]]"
+                              required
+                              auto-validate="[[ !readonly ]]"
+                              error-message="Suburb required">
                       </paper-input>
                     </div>
                   </div>
                   <div class="col-sm-12 col-xs-12">
                     <div class="form-group">
                       <paper-input
-                        readonly="[[ readonly ]]"
-                        label="City"
-                        type="text"
-                        name="city"
-                        value="[[ location.city ]]"
-                        required
-                        auto-validate="[[ !readonly ]]"
-                        error-message="City required">
+                              readonly="[[ readonly ]]"
+                              label="City"
+                              type="text"
+                              name="city"
+                              value="[[ location.city ]]"
+                              required
+                              auto-validate="[[ !readonly ]]"
+                              error-message="City required">
                       </paper-input>
                     </div>
                   </div>
                   <div class="col-sm-12 col-xs-12">
                     <div class="form-group">
                       <paper-input
-                        readonly="[[ readonly ]]"
-                        label="Province/State"
-                        type="text"
-                        name="province"
-                        value="[[ location.province ]]"
-                        required
-                        auto-validate="[[ !readonly ]]"
-                        error-message="Province/State required">
+                              readonly="[[ readonly ]]"
+                              label="Province/State"
+                              type="text"
+                              name="province"
+                              value="[[ location.province ]]"
+                              required
+                              auto-validate="[[ !readonly ]]"
+                              error-message="Province/State required">
                       </paper-input>
                     </div>
                   </div>
                   <div class="col-sm-12 col-xs-12">
                     <div class="form-group">
                       <paper-input
-                        readonly="[[ readonly ]]"
-                        label="Country"
-                        type="text"
-                        name="country"
-                        value="[[ location.country ]]"
-                        required
-                        auto-validate="[[ !readonly ]]"
-                        error-message="Country required">
+                              readonly="[[ readonly ]]"
+                              label="Country"
+                              type="text"
+                              name="country"
+                              value="[[ location.country ]]"
+                              required
+                              auto-validate="[[ !readonly ]]"
+                              error-message="Country required">
                       </paper-input>
                     </div>
                   </div>
                   <div class="col-sm-12 col-xs-12">
                     <div class="form-group">
                       <paper-input
-                        readonly="[[ readonly ]]"
-                        label="Postal/Zip Code"
-                        type="text"
-                        name="postalCode"
-                        value="[[ location.postalCode ]]"
-                        required
-                        auto-validate="[[ !readonly ]]"
-                        error-message="Postal/Zip required">
+                              readonly="[[ readonly ]]"
+                              label="Postal/Zip Code"
+                              type="text"
+                              name="postalCode"
+                              value="[[ location.postalCode ]]"
+                              required
+                              auto-validate="[[ !readonly ]]"
+                              error-message="Postal/Zip required">
                       </paper-input>
                     </div>
                   </div>
@@ -292,8 +292,8 @@ Element for location or address display and capture
       _findAddressComponentValue: function (addressComponents, fieldType) {
         var fields = addressComponents.filter(function(component) {
           return component.types.filter(function (type) {
-            return type === fieldType;
-          }).length === 1;
+                    return type === fieldType;
+                  }).length === 1;
         });
         return fields.length > 0 ? fields[0].long_name : null;
       },
@@ -303,7 +303,9 @@ Element for location or address display and capture
       },
 
       serialize: function () {
-        return this.$.form.serialize();
+        var formData = this.$.form.serialize();
+        formData.coordinates = this.location.coordinates;
+        return formData;
       }
     });
   </script>
