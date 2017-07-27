@@ -3,10 +3,7 @@
 <link rel="import" href="../google-map/google-map.html">
 <link rel="import" href="../google-map/google-map-marker.html">
 <link rel="import" href="../paper-input/paper-input.html">
-<link rel="import" href="../paper-icon-button/paper-icon-button.html">
-<link rel="import" href="../iron-icons/iron-icons.html">
 <link rel="import" href="../paper-input-location/paper-input-location.html">
-
 
 <!--
 `ct-location`
@@ -66,7 +63,7 @@ Element for location or address display and capture
                         id="addressSearchInput"
                         maps-api-key="[[ googleMapApiKey ]]"
                         label="Search Address"
-                        hidden$="[[ readOnly ]]"
+                        hidden="[[ readonly ]]"
                         on-place-clicked="_addressSearched">
                 </paper-input-location>
               </div>
@@ -84,7 +81,7 @@ Element for location or address display and capture
                   <google-map-marker
                           latitude="{{ location.coordinates.latitude }}"
                           longitude="{{ location.coordinates.longitude }}"
-                          draggable$="[[ !readOnly ]]">
+                          draggable$="[[ !readonly ]]">
                   </google-map-marker>
                 </google-map>
               </div>
@@ -98,7 +95,7 @@ Element for location or address display and capture
               </div>
             </div>
           </div>
-          <div class="col-xs-11 col-sm-6">
+          <div class="col-xs-12 col-sm-6">
             <form is="iron-form"
                   id="form"
                   method="post"
@@ -110,7 +107,7 @@ Element for location or address display and capture
                     <div class="form-group">
                       <paper-input
                         id="unitNumberInput"
-                        readonly="[[ readOnly ]]"
+                        readonly="[[ readonly ]]"
                         label="Unit/Apartment Number"
                         type="text"
                         name="unitNumber"
@@ -122,7 +119,7 @@ Element for location or address display and capture
                     <div class="form-group">
                       <paper-input
                         id="complexNameInput"
-                        readonly="[[ readOnly ]]"
+                        readonly="[[ readonly ]]"
                         label="Complex/Farm Name"
                         type="text"
                         name="complexName"
@@ -133,13 +130,13 @@ Element for location or address display and capture
                   <div class="col-sm-12 col-xs-12">
                     <div class="form-group">
                       <paper-input
-                        readonly="[[ readOnly ]]"
+                        readonly="[[ readonly ]]"
                         label="Street Number"
                         name="streetNumber"
                         value="[[ location.streetNumber ]]"
                         required
                         allowed-pattern="[0-9]"
-                        auto-validate$="[[ !readOnly ]]"
+                        auto-validate="[[ !readonly ]]"
                         error-message="Street number required">
                       </paper-input>
                     </div>
@@ -147,13 +144,13 @@ Element for location or address display and capture
                   <div class="col-sm-12 col-xs-12">
                     <div class="form-group">
                       <paper-input
-                        readonly="[[ readOnly ]]"
+                        readonly="[[ readonly ]]"
                         label="Street Name"
                         type="text"
                         name="streetName"
                         value="[[ location.streetName ]]"
                         required
-                        auto-validate$="[[ !readOnly ]]"
+                        auto-validate="[[ !readonly ]]"
                         error-message="Street name required">
                       </paper-input>
                     </div>
@@ -161,13 +158,13 @@ Element for location or address display and capture
                   <div class="col-sm-12 col-xs-12">
                     <div class="form-group">
                       <paper-input
-                        readonly="[[ readOnly ]]"
+                        readonly="[[ readonly ]]"
                         label="Suburb"
                         type="text"
                         name="suburb"
                         value="[[ location.suburb ]]"
                         required
-                        auto-validate$="[[ !readOnly ]]"
+                        auto-validate="[[ !readonly ]]"
                         error-message="Suburb required">
                       </paper-input>
                     </div>
@@ -175,13 +172,13 @@ Element for location or address display and capture
                   <div class="col-sm-12 col-xs-12">
                     <div class="form-group">
                       <paper-input
-                        readonly="[[ readOnly ]]"
+                        readonly="[[ readonly ]]"
                         label="City"
                         type="text"
                         name="city"
                         value="[[ location.city ]]"
                         required
-                        auto-validate$="[[ !readOnly ]]"
+                        auto-validate="[[ !readonly ]]"
                         error-message="City required">
                       </paper-input>
                     </div>
@@ -189,13 +186,13 @@ Element for location or address display and capture
                   <div class="col-sm-12 col-xs-12">
                     <div class="form-group">
                       <paper-input
-                        readonly="[[ readOnly ]]"
+                        readonly="[[ readonly ]]"
                         label="Province/State"
                         type="text"
                         name="province"
                         value="[[ location.province ]]"
                         required
-                        auto-validate$="[[ !readOnly ]]"
+                        auto-validate="[[ !readonly ]]"
                         error-message="Province/State required">
                       </paper-input>
                     </div>
@@ -203,13 +200,13 @@ Element for location or address display and capture
                   <div class="col-sm-12 col-xs-12">
                     <div class="form-group">
                       <paper-input
-                        readonly="[[ readOnly ]]"
+                        readonly="[[ readonly ]]"
                         label="Country"
                         type="text"
                         name="country"
                         value="[[ location.country ]]"
                         required
-                        auto-validate$="[[ !readOnly ]]"
+                        auto-validate="[[ !readonly ]]"
                         error-message="Country required">
                       </paper-input>
                     </div>
@@ -217,13 +214,13 @@ Element for location or address display and capture
                   <div class="col-sm-12 col-xs-12">
                     <div class="form-group">
                       <paper-input
-                        readonly="[[ readOnly ]]"
+                        readonly="[[ readonly ]]"
                         label="Postal/Zip Code"
                         type="text"
                         name="postalCode"
                         value="[[ location.postalCode ]]"
                         required
-                        auto-validate$="[[ !readOnly ]]"
+                        auto-validate="[[ !readonly ]]"
                         error-message="Postal/Zip required">
                       </paper-input>
                     </div>
@@ -245,7 +242,7 @@ Element for location or address display and capture
 
       properties: {
         googleMapApiKey: String,
-        readOnly: {
+        readonly: {
           type: Boolean,
           value: false
         },
