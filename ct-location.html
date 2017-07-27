@@ -135,10 +135,10 @@ Element for location or address display and capture
                       <paper-input
                         readonly="[[ readOnly ]]"
                         label="Street Number"
-                        type="text"
                         name="streetNumber"
                         value="[[ location.streetNumber ]]"
                         required
+                        allowed-pattern="[0-9]"
                         auto-validate$="[[ !readOnly ]]"
                         error-message="Street number required">
                       </paper-input>
