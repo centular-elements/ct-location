@@ -1,4 +1,12 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../ct-core-utils/ct-api-consumer-behaviour.html">
+<link rel="import" href="../google-map/google-map.html">
+<link rel="import" href="../google-map/google-map-marker.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../paper-input-location/paper-input-location.html">
+
 
 <!--
 `ct-location`
@@ -9,12 +17,225 @@ Element for location or address display and capture
 
 <dom-module id="ct-location">
   <template>
-    <style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style is="custom-styles">
       :host {
         display: block;
+        --paper-input-container:  {
+          border-top:1px solid #ccc;
+          border-left:1px solid #ccc;
+          border-right:1px solid #ccc;
+          border-bottom: none;
+          padding: 0;
+        };
+        --paper-input-container-input: {
+          margin-left: 10px !important;
+          width: calc(100% - 20px);
+        };
+        /*padding to move from border */
+        --paper-input-container-label: {
+          margin-left: 10px;
+        };
+        --paper-input-container-label-floating: {
+          margin-left: 10px;
+        };
+      }
+      .main-section {
+        margin-top:20px;
+      }
+      .search-field {
+        margin-bottom: 10px;
+      }
+      .table-search-button-field {
+        vertical-align: middle !important;
+      }
+      google-map {
+        height: 430px;
+        margin-top: 10px;
+        margin-bottom: 10px;
       }
     </style>
-    <h2>Hello [[prop1]]</h2>
+
+    <div class="main-section">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-11 col-sm-6">
+            <div class="row">
+              <div class="col-xs-12 col-sm-12">
+                <paper-input-location
+                        id="addressSearchInput"
+                        maps-api-key="[[ googleMapApiKey ]]"
+                        label="Search Address"
+                        hidden$="[[ readOnly ]]"
+                        on-place-clicked="_addressSearched">
+                </paper-input-location>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-12">
+                <google-map
+                        api-key="[[ googleMapApiKey ]]"
+                        latitude="[[ location.coordinates.latitude ]]"
+                        longitude="[[ location.coordinates.longitude ]]"
+                        zoom="15"
+                        fit-to-marker
+                        disable-map-type-control
+                        disable-street-view-control>
+                  <google-map-marker
+                          latitude="{{ location.coordinates.latitude }}"
+                          longitude="{{ location.coordinates.longitude }}"
+                          draggable$="[[ !readOnly ]]">
+                  </google-map-marker>
+                </google-map>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-12">
+                <span>Latitude: [[ location.coordinates.latitude ]]</span>
+              </div>
+              <div class="col-xs-12 col-sm-12">
+                <span>Longitude: [[ location.coordinates.longitude ]]</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-11 col-sm-6">
+            <form is="iron-form"
+                  id="form"
+                  method="post"
+                  disable-native-validation-ui
+                  novalidate>
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-sm-12 col-xs-12">
+                    <div class="form-group">
+                      <paper-input
+                        id="unitNumberInput"
+                        readonly="[[ readOnly ]]"
+                        label="Unit/Apartment Number"
+                        type="text"
+                        name="unitNumber"
+                        value="[[ location.unitNumber ]]">
+                      </paper-input>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-xs-12">
+                    <div class="form-group">
+                      <paper-input
+                        id="complexNameInput"
+                        readonly="[[ readOnly ]]"
+                        label="Complex/Farm Name"
+                        type="text"
+                        name="complexName"
+                        value="[[ location.complexName ]]">
+                      </paper-input>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-xs-12">
+                    <div class="form-group">
+                      <paper-input
+                        readonly="[[ readOnly ]]"
+                        label="Street Number"
+                        name="streetNumber"
+                        value="[[ location.streetNumber ]]"
+                        required
+                        allowed-pattern="[0-9]"
+                        auto-validate$="[[ !readOnly ]]"
+                        error-message="Street number required">
+                      </paper-input>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-xs-12">
+                    <div class="form-group">
+                      <paper-input
+                        readonly="[[ readOnly ]]"
+                        label="Street Name"
+                        type="text"
+                        name="streetName"
+                        value="[[ location.streetName ]]"
+                        required
+                        auto-validate$="[[ !readOnly ]]"
+                        error-message="Street name required">
+                      </paper-input>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-xs-12">
+                    <div class="form-group">
+                      <paper-input
+                        readonly="[[ readOnly ]]"
+                        label="Suburb"
+                        type="text"
+                        name="suburb"
+                        value="[[ location.suburb ]]"
+                        required
+                        auto-validate$="[[ !readOnly ]]"
+                        error-message="Suburb required">
+                      </paper-input>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-xs-12">
+                    <div class="form-group">
+                      <paper-input
+                        readonly="[[ readOnly ]]"
+                        label="City"
+                        type="text"
+                        name="city"
+                        value="[[ location.city ]]"
+                        required
+                        auto-validate$="[[ !readOnly ]]"
+                        error-message="City required">
+                      </paper-input>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-xs-12">
+                    <div class="form-group">
+                      <paper-input
+                        readonly="[[ readOnly ]]"
+                        label="Province/State"
+                        type="text"
+                        name="province"
+                        value="[[ location.province ]]"
+                        required
+                        auto-validate$="[[ !readOnly ]]"
+                        error-message="Province/State required">
+                      </paper-input>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-xs-12">
+                    <div class="form-group">
+                      <paper-input
+                        readonly="[[ readOnly ]]"
+                        label="Country"
+                        type="text"
+                        name="country"
+                        value="[[ location.country ]]"
+                        required
+                        auto-validate$="[[ !readOnly ]]"
+                        error-message="Country required">
+                      </paper-input>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-xs-12">
+                    <div class="form-group">
+                      <paper-input
+                        readonly="[[ readOnly ]]"
+                        label="Postal/Zip Code"
+                        type="text"
+                        name="postalCode"
+                        value="[[ location.postalCode ]]"
+                        required
+                        auto-validate$="[[ !readOnly ]]"
+                        error-message="Postal/Zip required">
+                      </paper-input>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </template>
 
   <script>
@@ -23,12 +244,70 @@ Element for location or address display and capture
       is: 'ct-location',
 
       properties: {
-        prop1: {
-          type: String,
-          value: 'ct-location',
+        googleMapApiKey: String,
+        readOnly: {
+          type: Boolean,
+          value: false
         },
+        location: {
+          type: Object,
+          notify: true,
+          value: {
+            coordinates: {
+              latitude: -33.9248685,
+              longitude: 18.424055299999964
+            },
+            complexName: "",
+            unitNumber: "",
+            streetNumber: "",
+            streetName: "",
+            suburb: "",
+            city: "",
+            province: "",
+            country: "",
+            postalCode: ""
+          }
+        }
       },
 
+      _addressSearched: function () {
+        var input = this.$.addressSearchInput;
+        var geoPos = input.locationGeoPos;
+        var addressComponents = input.place.address_components;
+
+        this.location = {
+          coordinates: {
+            latitude: geoPos.lat,
+            longitude: geoPos.lng
+          },
+          unitNumber: this.$.unitNumberInput.value,
+          complexName: this.$.complexNameInput.value,
+          streetNumber: this._findAddressComponentValue(addressComponents, 'street_number'),
+          streetName: this._findAddressComponentValue(addressComponents, 'route'),
+          suburb: this._findAddressComponentValue(addressComponents, 'sublocality'),
+          city: this._findAddressComponentValue(addressComponents, 'locality'),
+          province: this._findAddressComponentValue(addressComponents, 'administrative_area_level_1'),
+          country: this._findAddressComponentValue(addressComponents, 'country'),
+          postalCode: this._findAddressComponentValue(addressComponents, 'postal_code')
+        };
+      },
+
+      _findAddressComponentValue: function (addressComponents, fieldType) {
+        var fields = addressComponents.filter(function(component) {
+          return component.types.filter(function (type) {
+            return type === fieldType;
+          }).length === 1;
+        });
+        return fields.length > 0 ? fields[0].long_name : null;
+      },
+
+      validate: function () {
+        return this.$.form.validate();
+      },
+
+      getLocation: function () {
+        return this.$.form.serialize();
+      }
     });
   </script>
 </dom-module>
