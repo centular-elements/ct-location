@@ -5,8 +5,8 @@
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0",
     "paper-input": "PolymerElements/paper-input#^1.1.23",
-    "ct-core-utils": "centular-elements/ct-core-utils",
     "google-map": "GoogleWebComponents/google-map#^1.2.0",
+    "iron-form": "PolymerElements/iron-form#^1.1.4",
     "paper-input-location": "Koada-os/paper-input-location#^2.0.0"
   },
   "devDependencies": {
