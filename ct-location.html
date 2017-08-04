@@ -130,6 +130,7 @@ Element for location or address display and capture
                   <div class="col-sm-12 col-xs-12">
                     <div class="form-group">
                       <paper-input
+                              id="streetNumberInput"
                               readonly="[[ readonly ]]"
                               label="Street Number"
                               name="streetNumber"
@@ -144,6 +145,7 @@ Element for location or address display and capture
                   <div class="col-sm-12 col-xs-12">
                     <div class="form-group">
                       <paper-input
+                              id="streetNameInput"
                               readonly="[[ readonly ]]"
                               label="Street Name"
                               type="text"
@@ -163,8 +165,6 @@ Element for location or address display and capture
                               type="text"
                               name="suburb"
                               value="[[ location.suburb ]]"
-                              required
-                              auto-validate="[[ !readonly ]]"
                               error-message="Suburb required">
                       </paper-input>
                     </div>
@@ -172,6 +172,7 @@ Element for location or address display and capture
                   <div class="col-sm-12 col-xs-12">
                     <div class="form-group">
                       <paper-input
+                              id="cityInput"
                               readonly="[[ readonly ]]"
                               label="City"
                               type="text"
@@ -191,8 +192,6 @@ Element for location or address display and capture
                               type="text"
                               name="province"
                               value="[[ location.province ]]"
-                              required
-                              auto-validate="[[ !readonly ]]"
                               error-message="Province/State required">
                       </paper-input>
                     </div>
@@ -200,6 +199,7 @@ Element for location or address display and capture
                   <div class="col-sm-12 col-xs-12">
                     <div class="form-group">
                       <paper-input
+                              id="countryInput"
                               readonly="[[ readonly ]]"
                               label="Country"
                               type="text"
@@ -219,8 +219,6 @@ Element for location or address display and capture
                               type="text"
                               name="postalCode"
                               value="[[ location.postalCode ]]"
-                              required
-                              auto-validate="[[ !readonly ]]"
                               error-message="Postal/Zip required">
                       </paper-input>
                     </div>
@@ -305,6 +303,45 @@ Element for location or address display and capture
         var formData = this.$.form.serialize();
         formData.coordinates = this.location.coordinates;
         return formData;
+      },
+
+      clear: function () {
+        this.location = {
+          coordinates: {
+            latitude: -33.9248685,
+            longitude: 18.424055299999964
+          },
+          complexName: "",
+          unitNumber: "",
+          streetNumber: "",
+          streetName: "",
+          suburb: "",
+          city: "",
+          province: "",
+          country: "",
+          postalCode: ""
+        };
+
+        if (this.$.addressSearchInput) {
+          this.$.addressSearchInput.query = '';
+        }
+
+        if (this.$.streetNumberInput) {
+          this.$.streetNumberInput.invalid = false;
+        }
+
+        if (this.$.streetNameInput) {
+          this.$.streetNameInput.invalid = false;
+        }
+
+        if (this.$.cityInput) {
+          this.$.cityInput.invalid = false;
+        }
+
+        if (this.$.countryInput) {
+          this.$.countryInput.invalid = false;
+        }
+
       }
     });
   </script>
