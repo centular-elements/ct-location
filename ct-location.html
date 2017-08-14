@@ -118,18 +118,6 @@ Element for location or address display and capture
                   <div class="col-sm-12 col-xs-12">
                     <div class="form-group">
                       <paper-input
-                              id="complexNameInput"
-                              readonly="[[ readonly ]]"
-                              label="Complex/Farm Name"
-                              type="text"
-                              name="complexName"
-                              value="[[ location.complexName ]]">
-                      </paper-input>
-                    </div>
-                  </div>
-                  <div class="col-sm-12 col-xs-12">
-                    <div class="form-group">
-                      <paper-input
                               id="streetNumberInput"
                               readonly="[[ readonly ]]"
                               label="Street Number"
@@ -251,7 +239,6 @@ Element for location or address display and capture
               latitude: -33.9248685,
               longitude: 18.424055299999964
             },
-            complexName: "",
             unitNumber: "",
             streetNumber: "",
             streetName: "",
@@ -275,7 +262,6 @@ Element for location or address display and capture
             longitude: geoPos.lng
           },
           unitNumber: this.$.unitNumberInput.value,
-          complexName: this.$.complexNameInput.value,
           streetNumber: this._findAddressComponentValue(addressComponents, 'street_number'),
           streetName: this._findAddressComponentValue(addressComponents, 'route'),
           suburb: this._findAddressComponentValue(addressComponents, 'sublocality'),
@@ -311,7 +297,6 @@ Element for location or address display and capture
             latitude: -33.9248685,
             longitude: 18.424055299999964
           },
-          complexName: "",
           unitNumber: "",
           streetNumber: "",
           streetName: "",
